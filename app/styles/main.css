@@ -1,31 +1,147 @@
 /* Project uses CSSNEXT (CSS4) - http://cssnext.io/features/ via postcss */
+@import 'https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans:300,400,600';
 
 :root {
-	--primary: dodgerblue;
+	/*--primary: #6E5FF4; !* Dark Blue *!*/
+    /*--secondary: #23A1D0; !* Green *!*/
+    --primary: forestgreen;
+    --secondary: #00cc66;
+
+    --accent-1: #6E5FF4; /* Purple */
+    --accent-2: #C86DD7; /* Purple */
+    --accent-3: #0FC7C6; /* Aqua */
+    --accent-4: #60A7FA; /* Light Blue */
+    --gray: #4A4A4A;
+    --gray-light: #8C8C8C;
+    --gray-lighter: #C4C4C4;
+    --gray-lightest: #EEEEEE;
+    --danger: #EA5329;
+
+    --btn-primary: #0FC7C6; /* Aqua */
+    --btn-secondary: #60A7FA; /* Light Blue */
+
+	--nav-size: 89px;
 }
 
 * {
 	box-sizing: border-box;
 }
 
-html, body {
-	width: 100%;
-	height: 100%;
-	font-family: helvetica, sans-seif;
-	font-size: 100%;
+html {
+    font-size: 100%;
 }
 
 body {
-    font-family: helvetica, sans-seif;
-	font-size: 16px;
+    font-family: 'Open Sans', helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--gray);
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-	color: var(--primary);
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid color(black alpha(-90%));
+    margin: 2rem 0;
+    padding: 0;
+    clear:both;
+}
 
-	& small {
-		color: gray(150);
-	}
+a {
+    color: var(--accent-3);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-3);
+
+    &:hover, &:focus {
+              color: black;
+              border-color: black;
+    }
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+
+/* Typography */
+h1, .h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+    position: relative;
+    margin: 0 0 2rem;
+
+    &.huge {
+         font-size: 2.25rem;
+         line-height: 1;
+
+    }
+
+    &.secondary-font {
+         letter-spacing: -2px;  }
+}
+
+h2, .h2 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+
+
+    &.huge {
+         font-size: 2.25rem;
+         line-height: 1;
+         letter-spacing: 2px;
+         text-transform: uppercase;
+    }
+}
+
+h3, .h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.55;
+}
+
+h4, .h4 {
+    font-size: .9rem;
+    font-weight: 300;
+}
+
+h5, .h5 {
+    font-size: .9rem;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.decorative {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1.5rem;
+
+/*&:after {*/
+     /*content: '';*/
+     /*position: absolute;*/
+     /*left: 50%;*/
+     /*bottom: .75rem;*/
+     /*background: var(--secondary);*/
+     /*width: 80%;*/
+     /*max-width: 200px;*/
+     /*height: 2px;*/
+     /*transform: translateX(-50%);*/
+ /*}*/
+}
+
+.pad-1 {
+    padding: 1rem;
 }
 
 /* Helpers */
@@ -48,4 +164,167 @@ h1 {
 input[disabled] {
 	cursor: not-allowed;
 	opacity: .5;
+}
+
+.primary-font {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+}
+
+.secondary-font {
+    font-family: 'Open Sans', sans-serif;
+    font-size: .875em;
+}
+
+
+/* Navbar */
+.navbar {
+	background: linear-gradient(to right, var(--primary), var(--secondary));
+	padding: 1.5em 1em;
+	color: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+
+    & .logo {
+          border: 0;
+
+        & img {
+            width: 262px;
+            margin-top: 0;
+        }
+    }
+
+    & .nav {
+          float: right;
+          display: none;
+          letter-spacing: 2px;
+          font-size: .875rem;
+
+
+        & a:not(.btn) {
+              color: white;
+              display: block;
+              padding: .6rem 1rem;
+              border-bottom: 0;
+
+            &:hover, &:focus {
+                          opacity: .5;
+                      }
+            }
+
+            & .btn {
+                  margin-left: 1.5rem;
+                  padding: .75rem 2rem;
+                  display: none;
+              }
+        }
+
+        & .navbar-bg {
+              background: linear-gradient(to right, var(--primary), var(--secondary));
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              z-index: -1;
+              transition: all .2s;
+          }
+
+    }
+
+    .navbar-offset {
+        margin-top: 89px;
+    }
+
+
+/* Nav or list base styles */
+.nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.nav-inline {
+        & li {
+              display: inline-block;
+          }
+    }
+}
+
+.nav-tabs {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-lightest);
+
+    & a {
+        padding: .5rem;
+        text-transform: uppercase;
+        border-bottom: 0;
+        display: inline-block;
+        position: relative;
+        top: 1px;
+
+        &.active, &:active {
+           border-bottom: 1px solid var(--primary);
+           color: var(--secondary);
+       }
+    }
+}
+
+.container {
+    max-width: 80.0em; /* 1280px */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.container-xs {
+    max-width: 31.25em; /* 500px */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section-header {
+    text-align: center;
+}
+.section-title {
+    margin-top: 2rem;
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: 125%;
+}
+
+input, select, textarea {
+    background: white;
+    border: 1px solid var(--gray-lighter);
+    padding: .75rem 1rem;
+    width: 100%;
+    transition: border-color 0.25s;
+    border-radius: 4px;
+    box-shadow: none;
+
+    &:focus {
+         outline: 0;
+         border-color: var(--secondary);
+     }
+
+    &[disabled] {
+         cursor: not-allowed;
+         opacity: .5;
+     }
+
+    &.invert {
+         background-color: transparent;
+         color: white;
+         border-color: white;
+
+    & option {
+          color: var(--gray); // Fixes: IE Win white text on options
+      }
+    }
 }

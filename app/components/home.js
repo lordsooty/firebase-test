@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DemoImage from '../assets/images/apple-touch-icon.png';
+import PolicySearch from './search/policySearch';
 
 class Home extends Component {
     constructor(props) {
@@ -26,20 +27,8 @@ class Home extends Component {
         const { name } = this.state;
 
         return (
-            <div className="text-center">
-                <h1>React Starter <small>Client</small></h1>
-
-                <h2>Name: {name}</h2>
-
-                {/* Example form with action */}
-                <form className="search" onSubmit={this.handleSearch}>
-                    <input onChange={this.handleInput} type="search" placeholder="Search" />
-                    <button type="submit">Search</button>
-                </form>
-
-                {/* Example image with file-loader */}
-                <br />
-                <img src={DemoImage} alt="Black box" />
+            <div className="navbar-offset text-center">
+                <PolicySearch />
             </div>
         );
     }

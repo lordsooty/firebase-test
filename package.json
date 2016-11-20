@@ -1,24 +1,27 @@
 {
-  "name": "i4t admin",
+  "name": "i4tAdmin",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npm run lint && npm run clean && webpack --progress -p",
-    "start": "webpack-dev-server --no-info --progress --hot --inline --port 9000 --open",
+    "start": "webpack-dev-server --progress --history-api-fallback --hot --inline --port 9000 --open",
     "clean": "rimraf ./dist && mkdir dist",
     "lint": "eslint ./app --ext .js --env browser --color"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "0.14.0",
+    "axios": "^0.15.2",
     "classnames": "2.2.5",
     "dotenv": "^2.0.0",
+    "jwt-decode": "2.1.0",
     "normalize.css": "4.2.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",
-    "react-router": "2.7.0"
+    "react-router": "2.7.0",
+    "semantic-ui-css": "^2.2.4",
+    "semantic-ui-react": "^0.60.10"
   },
   "devDependencies": {
     "babel-core": "^6.7.0",
@@ -40,6 +43,7 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
+    "webpack-config": "^6.2.1",
     "webpack-dev-server": "^1.15.1"
   }
 }

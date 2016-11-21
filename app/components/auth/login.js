@@ -19,15 +19,8 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // if (nextProps.isAuthenticated === true) {
-        //     if (location.search === '?redirect') {
-        //         browserHistory.goBack();
-        //     } else {
-        //         browserHistory.push('/user/policies');
-        //     }
-        // }
         // if (nextProps.errorMessage) {
-        //     this.state = { loading: false };
+            this.state = { loading: false };
         // }
     }
 

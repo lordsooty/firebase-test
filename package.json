@@ -7,7 +7,8 @@
     "build": "npm run lint && npm run clean && webpack --progress -p",
     "start": "webpack-dev-server --progress --history-api-fallback --hot --inline --port 9000 --open",
     "clean": "rimraf ./dist && mkdir dist",
-    "lint": "eslint ./app --ext .js --env browser --color"
+    "lint": "eslint ./app --ext .js --env browser --color",
+    "test": "npm run lint"
   },
   "author": "",
   "license": "ISC",

@@ -46,9 +46,10 @@ const routes = (
     <Router history={browserHistory}>
         <Route path="/" component={Main}>
             <IndexRoute component={Home}/>
+            <Route path="home" component="{Home}" />
             <Route path="signin" component={Login} />
             <Route path="reset-password" component={ResetPassword} />
-            <Route path="change-password" component={ChangePassword}  />
+            <Route path="change-password" component={ChangePassword} />
         </Route>
         <Route path="*" component={NotFound} />
     </Router>

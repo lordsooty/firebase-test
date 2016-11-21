@@ -4,6 +4,7 @@ import StylesIgnored from '../styles/main.css';
 import Navbar from './navbar.js';
 
 
+
 const Main = (props) => (
     <div>
         {/* Header */}

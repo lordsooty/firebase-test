@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, browserHistory } from 'react-router';
-// import { Button } from 'semantic-ui-react'
 
 import authHelper from '../../helpers/auth-helper';
+import Api from '../../helpers/api'
 
 class Login extends Component {
 
@@ -34,33 +34,44 @@ class Login extends Component {
     onHandleSubmit(props) {
         this.state = { loading: true };
         console.log('logging in')
-        // this.props.dispatch(logoutAction());
-        // this.props.dispatch(loginAction(props));
+        localStorage.removeItem('auth-token');
+
+        const user = {
+            username: props.email,
+            password: props.password
+        };
+
+        Api.login(user).then((result) => {
+            localStorage.setItem('auth-token', result.data.token);
+            browserHistory.push('/home');
+        }).catch((err) => {
+            console.log(err.message);
+        })
     }
 
     render() {
-        // const { handleSubmit } = this.props;
         return (
-            <div className="navbar-offset">
-                <div className="container-xs">
-                    <h1 className="section-title text-center decorative">Welcome back</h1>
-                    <form onSubmit={this.onHandleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">User name</label>
-                            <input type="email" name="email" placeholder="Email Address" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" name="password" placeholder="Password" />
-                        </div>
-                        <button className="ui primary button" type="submit" disabled={this.state.loading}>{ this.state.loading ? 'Signing in...' : 'Sign in' }</button>
-                        {this.props.errorMessage ? 
-                            <div className="help-text error m-t-1">Login failed, please check your details and try again</div> 
-                            : null}
-                        <p className="text-center m-t-2">
-                            <Link to="/reset-password" activeClassName="active">Forgot your password?</Link>
-                        </p>
-                    </form>
+            <div className="ui middle aligned center aligned grid">
+                <div className="six wide column">
+                        <h1 className="ui teal header">Welcome back</h1>
+
+                        <form className="ui  form" onSubmit={this.onHandleSubmit}>
+                            <div className="field">
+                                <label htmlFor="email">User name</label>
+                                <input type="email" name="email" placeholder="Email Address" />
+                            </div>
+                            <div className="field">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" name="password" placeholder="Password" />
+                            </div>
+                            <button className="ui fluid teal submit button" type="submit" disabled={this.state.loading}>{ this.state.loading ? 'Signing in...' : 'Sign in' }</button>
+                            {this.props.errorMessage ?
+                                <div className="help-text error">Login failed, please check your details and try again</div>
+                                : null}
+                            <p className="text-center">
+                                <Link to="/reset-password" activeClassName="active">Forgot your password?</Link>
+                            </p>
+                        </form>
                 </div>
             </div>
         );

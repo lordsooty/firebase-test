@@ -9,11 +9,12 @@ class Logout extends Component {
     }
 
     handleLogout(event) {
+        console.log('handleLogout')
         event.preventDefault();
         localStorage.removeItem('auth-token');
 
-        // this.props.dispatch(logoutAction());
-        browserHistory.push('/');
+        console.log('goto signin')
+        browserHistory.push('/signin');
     }
 
     render() {
@@ -23,16 +24,11 @@ class Logout extends Component {
     }
 }
 
-Logout.propTypes = {
-    dispatch: PropTypes.func,
-    isAuthenticated: PropTypes.bool
-};
+// Logout.propTypes = {
+//     dispatch: PropTypes.func,
+//     isAuthenticated: PropTypes.bool
+// };
 
-// function mapStateToProps(state) {
-//     return {
-//         isAuthenticated: state.auth.isAuthenticated
-//     };
-// }
 
 export default Logout
 

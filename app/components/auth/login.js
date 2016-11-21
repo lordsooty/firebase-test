@@ -14,37 +14,43 @@ class Login extends Component {
 
     componentWillMount() {
         if (authHelper.isAuthenticated()) {
-            browserHistory.push('/user/policies');
+            browserHistory.push('/home');
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.isAuthenticated === true) {
-            if (location.search === '?redirect') {
-                browserHistory.goBack();
-            } else {
-                browserHistory.push('/user/policies');
-            }
-        }
-        if (nextProps.errorMessage) {
-            this.state = { loading: false };
-        }
+        // if (nextProps.isAuthenticated === true) {
+        //     if (location.search === '?redirect') {
+        //         browserHistory.goBack();
+        //     } else {
+        //         browserHistory.push('/user/policies');
+        //     }
+        // }
+        // if (nextProps.errorMessage) {
+        //     this.state = { loading: false };
+        // }
     }
 
-    onHandleSubmit(props) {
-        this.state = { loading: true };
+    onHandleSubmit(event) {
         console.log('logging in')
-        localStorage.removeItem('auth-token');
+        event.preventDefault();
 
+        // this.state = { loading: true };
+        // localStorage.removeItem('auth-token');
+
+        console.log('event.target', event.target.password.value)
         const user = {
-            username: props.email,
-            password: props.password
+            username: event.target.email.value,
+            password: event.target.password.value
         };
 
+        console.log('AAAAPPPPPPIIIII')
         Api.login(user).then((result) => {
             localStorage.setItem('auth-token', result.data.token);
             browserHistory.push('/home');
+            console.log('logged in ok')
         }).catch((err) => {
+            // todo - add error msg to page
             console.log(err.message);
         })
     }
@@ -55,7 +61,7 @@ class Login extends Component {
                 <div className="six wide column">
                         <h1 className="ui teal header">Welcome back</h1>
 
-                        <form className="ui  form" onSubmit={this.onHandleSubmit}>
+                        <form className="ui form" onSubmit={this.onHandleSubmit}>
                             <div className="field">
                                 <label htmlFor="email">User name</label>
                                 <input type="email" name="email" placeholder="Email Address" />

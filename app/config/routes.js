@@ -7,13 +7,14 @@ import Login from '../components/auth/login';
 import ResetPassword from '../components/auth/resetPassword';
 import ChangePassword from '../components/auth/changePassword';
 import NotFound from '../components/notfound';
+import AuthHelper from '../helpers/auth-helper';
 
-// const routeChange = () => {
-//     console.log('routeChange')
-//     document.body.scrollTop = 0;
-//     document.documentElement.scrollTop = 0; // Firefox
-//
-// };
+
+const routeChange = () => {
+    console.log('----------------routeChange')
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0; // Firefox
+};
 // class Routes extends Component {
 //   
 //     render() {
@@ -32,21 +33,21 @@ import NotFound from '../components/notfound';
 // }
 
 // const secureRouteChange = (nextState, replace, callback) => {
-//     console.log('secureRouteChange')
+//     console.log('---------secureRouteChange')
 //     if (AuthHelper.isAuthenticated()) {
 //         console.log('isAuthenticated');
 //         routeChange();
 //         return callback();
 //     }
-//     replace('/signinx');
+//     replace('/signin');
 //     return callback();
 // };
 
 const routes = (
     <Router history={browserHistory}>
         <Route path="/" component={Main}>
-            <IndexRoute component={Home}/>
-            <Route path="home" component="{Home}" />
+            <IndexRoute component={Home} />
+            <Route path="home" component={Home} />
             <Route path="signin" component={Login} />
             <Route path="reset-password" component={ResetPassword} />
             <Route path="change-password" component={ChangePassword} />

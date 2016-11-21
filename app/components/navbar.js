@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import authHelper from '../helpers/auth-helper';
+import AuthHelper from '../helpers/auth-helper';
+import Logout from '../components/auth/logout';
 
 const Navbar = (props) => {
 
     let authButton;
-    if (authHelper.isAuthenticated()) {
+    if (AuthHelper.isAuthenticated()) {
         authButton = (
-            <Link to="/user/policies">Sign out</Link>
+            <Logout />
         );
     } else {
         authButton = (

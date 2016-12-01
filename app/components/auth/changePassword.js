@@ -3,6 +3,8 @@ import { browserHistory, Link } from 'react-router';
 import Api from '../../helpers/api';
 
 class ChangePassword extends Component {
+    // todo - haven't changed / tested this as haven't got a place for it yet.
+
     constructor(props) {
         super(props);
 

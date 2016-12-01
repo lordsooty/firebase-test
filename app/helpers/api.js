@@ -23,6 +23,9 @@ const Api = {
 		oldPassword,
 		newPassword
 	}),
+	
+	// policy stuff
+	findPolicy: policyNumber => Axios.post(`${config.API_URL}/admin/policy/find`, {policyNumber})
 
 	//other stuff
 };
